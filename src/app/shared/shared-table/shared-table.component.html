@@ -1,6 +1,12 @@
 <div class="mat-elevation-z8 table-container">
   <div class="header-section">
-    <h1 class="table-title">Employee List</h1>
+
+    <div class="flex justify-end">
+      <h1 class="table-title mx-2">Employee List</h1>
+      <button mat-mini-fab *ngIf="hasAdd()" (click)="onEmitNavigation()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
     <mat-form-field class="search-bar">
       <mat-label>Search</mat-label>
       <input
@@ -13,7 +19,16 @@
     </mat-form-field>
   </div>
 
-  <table mat-table [dataSource]="_dataSource" class="employee-table">
+  <div *ngIf="_dataSource.data.length === 0" class="no-data-container flex flex-col items-center justify-center p-6">
+    <img
+      class="no-data-image w-48 md:w-64 lg:w-80"
+      src="png/nodata.png"
+      alt="No Data"
+    />
+    <p class="no-data-text mt-4 text-lg text-gray-600">No data available</p>
+  </div>
+
+  <table *ngIf="_dataSource.data.length > 0" mat-table [dataSource]="_dataSource" class="employee-table">
     <ng-container *ngFor="let item of displayedColumns(); let i = index">
       <ng-container *ngIf="item.value !== 'actions'; else actionColumn">
         <ng-container [matColumnDef]="item.value">
@@ -54,6 +69,7 @@
   </table>
 
   <mat-paginator
+    *ngIf="_dataSource.data.length > 0"
     class="custom-paginator"
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons

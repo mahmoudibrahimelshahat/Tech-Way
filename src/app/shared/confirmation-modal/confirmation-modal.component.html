@@ -1,1 +1,8 @@
-<p>confirmation-modal works!</p>
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">No Thanks</button>
+  <button mat-button  (click)="onConfirm()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

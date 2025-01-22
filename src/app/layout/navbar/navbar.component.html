@@ -1,0 +1,24 @@
+<div class="bg-[#00173C] text-white">
+    <nav class="flex justify-between items-center lg:py-5 mx-4">
+        <div class="flex items-center">
+            <img class="w-20 mx-2 lg:w-28 cursor-pointer" src="png/techway-logo.png" alt="TechWay Logo">
+        </div>
+
+        <div class="flex items-center gap-6">
+            <div #navLinks
+                class=" z-30 nav-links bg-[#00173C] duration-500 md:static absolute text-white font-bold md:min-h-fit min-h-[50vh] left-0 top-[-100%] md:w-auto  w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-4">
+                    <li class="cursor-pointer">
+                        <a class="text-[white]" [routerLink]="['/employees']" [routerLinkActive]="['active']">Employees</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lg:hidden md:hidden">
+                <button mat-button (click)="openMenu()" name="menu" class="text-3xl cursor-pointer md:hidden">
+                    <mat-icon class="text-white">menu</mat-icon>
+                </button>
+            </div>
+        </div>
+
+    </nav>
+</div>
